@@ -1,0 +1,8 @@
+Soal Teori
+1. PHP (Hypertext Preprocessor) adalah bahasa pemrograman open-source yang umumnya digunakan untuk membangun aplikasi web dinamis dan interaktif. PHP dapat dijalankan pada server web dan dikombinasikan dengan HTML, CSS, dan JavaScript untuk membuat halaman web yang dinamis. 
+2. Pemrograman berorientasi objek merupakan paradigma pemrograman berdasarkan konsep objek, yang dapat berisi data, dalam bentuk field atau dikenal juga sebagai atribut serta kode dalam bentuk fungsi/prosedur atau dikenal juga sebagai method.
+3. Asynchronous JavaScript and XML (AJAX) adalah gabungan dari teknologi pengembangan aplikasi web yang membuat aplikasi web menjadi lebih responsif terhadap interaksi pengguna.
+4. Relational Database, Hierarchical Database, Object Oriented Database, Network Database, dan NoSql Database.
+5. Normalisasi merupakan sebuah teknik dalam logical desain sebuah basis data yang mengelompokkan atribut dari suatu relasi sehingga membentuk struktur relasi yang baik (tanpa redudansi). Normalisasi adalah proses pembentukan struktur basis data sehingga sebagian besar ambiguity bisa dihilangkan.
+6. Flutter, Laravel, Node.js, Bootstarp
+7.Git adalah singkatan dari Group Inclusive Tour, tools ini digunakan untuk mengelola versi source code program dengan cara menentukan baris serta kode yang perlu diganti atau ditambahkan. 
