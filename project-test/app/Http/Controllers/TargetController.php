@@ -4,57 +4,99 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Rekening;
+use App\Models\Target;
 use Illuminate\Support\Facades\DB;
 
 class TargetController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $target = Target::get();
+        return view('target.tampil',['target'=>$target]);
+        
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
-        return view("target.tambah");
+        //$rekening = Rekening::get();
+        $rekening= DB::table('rekening')->get();
+        return view("target.tambah", compact('rekening'));
     }
+
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
         $request->validate([
+            'id_rekening' => 'required',
             'tahun' => 'required',
             'jumlah_target' => 'required'
         ]);
 
-        DB::table('target')->insert([
-            'tahun' => $request['tahun'],
-            'jumlah_target' => $request['jumlah_target']
+        //$target = new Target;
+        Target::create([
+            'id_rekening'=>$request->id_rekening,
+            'tahun'=>$request->tahun,
+            'jumlah_target'=>$request->jumlah_target
         ]);
+        
+
+        //$target->save();
+
 
         return redirect('/target');
     }
-    public function index()
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
     {
-        $target = DB::table('target')->get();
-        return view('target.tampil', ['target' => $target]);
+        //
     }
 
-    public function edit($id)
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
     {
-        $target = DB::table('target')->where('id', $id)->first();
-        return view('target.edit', ['target' => $target]);
+        $target = Target::find($id);
+        $rekening = Rekening::get();
+        return view('target.edit', ['target'=>$target, 'rekening'=>$rekening]);
     }
 
-    public function update(Request $request, $id){
-
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
         $request->validate([
+            'id_rekening' => 'required',
             'tahun' => 'required',
             'jumlah_target' => 'required'
         ]);
 
-        DB::table('target')
-            ->where('id', $id)
-            ->update(
-                    ['tahun' => $request -> tahun,
-                    'jumlah_target' => $request -> jumlah_target
-                ]);
-            return redirect('/target');
+        $target = Target::find($id);
+        $target->tahun=$request['target'];
+        $target->jumlah_target=$request['jumlah_target'];
+        $target->id_rekening=$request['id_rekening'];
+        $target->save();
+
     }
-    public function destroy($id){
-        DB::table('target')->where('id', $id)->delete();
-        return redirect('/target')->with('success', 'Data Berhasil Dihapus!');
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
     }
 }

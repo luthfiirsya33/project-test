@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('rekening', function (Blueprint $table) {
             $table->id();
             $table->integer('jenis_rekening');
-            $table->text('sub_rekening');
+            $table->integer('sub_rekening');
             $table->string('nama_rekening');
             $table->timestamps();
         });

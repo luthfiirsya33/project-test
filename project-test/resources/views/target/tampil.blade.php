@@ -21,9 +21,9 @@ Halaman List Target
     <thead>
       <tr>
         <th scope="col">No</th>
-        <th scope="col">Jenis Rekening</th>
+        {{-- <th scope="col">Jenis Rekening</th>
         <th scope="col">Sub Rekening</th>
-        <th scope="col">Nama Rekening</th>
+        <th scope="col">Nama Rekening</th> --}}
         <th scope="col">Tahun Anggaran</th>
         <th scope="col">Target (Rp)</th>
         <th scope="col">Action</th>
@@ -33,15 +33,18 @@ Halaman List Target
         @forelse ($target as $key => $value )
             <tr>
                 <td>{{$key + 1}}</td>
-                <td>
+                {{-- <td>
                     @foreach ($value->rekening as $rekening)
-                        {{$value->jenis_rekening}}
-                        {{$value->sub_rekening}}
-                        {{$value->nama_rekening}}
+                        {{$rekening->jenis_rekening}}
+                        {{$rekening->sub_rekening}}
+                        {{$rekening->nama_rekening}}
                      @endforeach
-                </td>
-                <td>{{$target->tahun}}</td>
-                <td>{{$target->jumlah_target}}</td>
+                </td> --}}
+                {{-- <td>{{$value->rekening->jenis_rekening}}</td>
+                <td>{{$value->rekening->sub_rekening}}</td>
+                <td>{{$value->rekening->nama_rekening}}</td> --}}
+                <td>{{$value->tahun}}</td>
+                <td>{{$value->jumlah_target}}</td>
                     <td class="d-flex justify-content-center" >
                     <a href="/target/{{$value -> id}}/edit" class="btn btn-info btn-sm my-1 mx-1">Edit</a>
                     <form action="/target/{{$value -> id}}" method="POST">

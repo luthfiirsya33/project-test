@@ -18,31 +18,34 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//CRUD Data Rekening
-Route::get('/rekening/create',[RekeningController::class,'create']);
-//Create Store
-Route::post('/rekening',[RekeningController::class,'store']);
-//Read
-Route::get('/rekening',[RekeningController::class,'index']);
-//Update
-Route::get('/rekening/{id_rekening}/edit', [RekeningController::class,'edit']);
-//Update Store
-Route::put('/rekening/{id_rekening}', [RekeningController::class,'update']);
-//Delete
-Route::delete('/rekening/{id_rekening}', [RekeningController::class,'destroy']);
-//Cetak
+Route::resource('rekening', RekeningController::class);
+Route::resource('target', TargetController::class);
 Route::get('/cetakrekening',[RekeningController::class,'cetak']);
 
-//CRUD Data Target
-Route::get('/target/create',[TargetController::class,'create']);
-//Create Store
-Route::post('/target',[TargetController::class,'store']);
-//Read
-Route::get('/target',[TargetController::class,'index']);
-//Update
-Route::get('/target/{id_target}/edit', [TargetController::class,'edit']);
-//Update Store
-Route::put('/target/{id_target}', [TargetController::class,'update']);
-//Delete
-Route::delete('/target/{id_target}', [TargetController::class,'destroy']);
+// //CRUD Data Rekening
+// Route::get('/rekening/create',[RekeningController::class,'create']);
+// //Create Store
+// Route::post('/rekening',[RekeningController::class,'store']);
+// //Read
+// Route::get('/rekening',[RekeningController::class,'index']);
+// //Update
+// Route::get('/rekening/{id_rekening}/edit', [RekeningController::class,'edit']);
+// //Update Store
+// Route::put('/rekening/{id_rekening}', [RekeningController::class,'update']);
+// //Delete
+// Route::delete('/rekening/{id_rekening}', [RekeningController::class,'destroy']);
+
+
+// //CRUD Data Target
+// Route::get('/target/create',[TargetController::class,'create']);
+// //Create Store
+// Route::post('/target',[TargetController::class,'store']);
+// //Read
+// Route::get('/target',[TargetController::class,'index']);
+// //Update
+// Route::get('/target/{id_target}/edit', [TargetController::class,'edit']);
+// //Update Store
+// Route::put('/target/{id_target}', [TargetController::class,'update']);
+// //Delete
+// Route::delete('/target/{id_target}', [TargetController::class,'destroy']);
 

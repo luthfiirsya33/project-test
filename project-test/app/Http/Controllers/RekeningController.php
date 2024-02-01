@@ -8,10 +8,26 @@ use Illuminate\Support\Facades\DB;
 
 class RekeningController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $rekening = DB::table('rekening')->get();
+        return view('rekening.tampil', ['rekening' => $rekening]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
         return view("rekening.tambah");
     }
+
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
         $request->validate([
@@ -28,26 +44,29 @@ class RekeningController extends Controller
 
         return redirect('/rekening');
     }
-    public function index()
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
     {
-        $rekening = DB::table('rekening')->get();
-        return view('rekening.tampil', ['rekening' => $rekening]);
+        //
     }
 
-    public function cetak()
-    {
-        $rekening = DB::table('rekening')->get();
-        return view('rekening.cetak', ['rekening' => $rekening]);
-    }
-
-    public function edit($id)
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
     {
         $rekening = DB::table('rekening')->where('id', $id)->first();
         return view('rekening.edit', ['rekening' => $rekening]);
     }
 
-    public function update(Request $request, $id){
-
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
         $request->validate([
             'jenis_rekening' => 'required',
             'sub_rekening' => 'required',
@@ -63,9 +82,19 @@ class RekeningController extends Controller
                 ]);
             return redirect('/rekening');
     }
-    public function destroy($id){
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
         DB::table('rekening')->where('id', $id)->delete();
         return redirect('/rekening')->with('success', 'Data Berhasil Dihapus!');
     }
 
+    public function cetak()
+    {
+        $rekening = DB::table('rekening')->get();
+        return view('rekening.cetak', ['rekening' => $rekening]);
+    }
 }
