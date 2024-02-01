@@ -5,19 +5,18 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Rekening;
-use App\Models\Target;
+use App\Models\Transaksi;
 use Illuminate\Support\Facades\DB;
 
-class TargetController extends Controller
+class TransaksiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $target = Target::with('rekening')->get();
-        return view('target.tampil',compact('target'));
-        
+        $transaksi = Transaksi::with('rekening')->get();
+        return view('transaksi.tampil',compact('transaksi'));
     }
 
     /**
@@ -26,7 +25,7 @@ class TargetController extends Controller
     public function create()
     {
         $rekening= DB::table('rekening')->get();
-        return view("target.tambah", compact('rekening'));
+        return view("transaksi.tambah", compact('rekening'));
     }
 
     /**
@@ -36,20 +35,20 @@ class TargetController extends Controller
     {
         $request->validate([
             'id_rekening' => 'required',
-            'tahun' => 'required',
-            'jumlah_target' => 'required'
+            'tanggal_setor' => 'required',
+            'jumlah_setor' => 'required'
         ]);
 
         
-        Target::create([
+        Transaksi::create([
             'id_rekening'=>$request->id_rekening,
-            'tahun'=>$request->tahun,
-            'jumlah_target'=>$request->jumlah_target
+            'tanggal_setor'=>$request->tanggal_setor,
+            'jumlah_setor'=>$request->jumlah_setor
         ]);
         
 
 
-        return redirect('/target');
+        return redirect('/transaksi');
     }
 
     /**
@@ -65,9 +64,9 @@ class TargetController extends Controller
      */
     public function edit(string $id)
     {
-        $target = Target::find($id);
+        $transaksi = Transaksi::find($id);
         $rekening = Rekening::get();
-        return view('target.edit', ['target'=>$target, 'rekening'=>$rekening]);
+        return view('transaksi.edit', ['transaksi'=>$transaksi, 'rekening'=>$rekening]);
     }
 
     /**
@@ -77,18 +76,17 @@ class TargetController extends Controller
     {
         $request->validate([
             'id_rekening' => 'required',
-            'tahun' => 'required',
-            'jumlah_target' => 'required'
+            'tanggal_setor' => 'required',
+            'jumlah_setor' => 'required'
         ]);
 
-        $target = Target::find($id);
-        $target->tahun=$request['tahun'];
-        $target->jumlah_target=$request['jumlah_target'];
-        $target->id_rekening=$request['id_rekening'];
-        $target->save();
+        $transaksi = Transaksi::find($id);
+        $transaksi->tanggal_setor=$request['tanggal_setor'];
+        $transaksi->jumlah_setor=$request['jumlah_setor'];
+        $transaksi->id_rekening=$request['id_rekening'];
+        $transaksi->save();
 
-        return redirect('/target');
-
+        return redirect('/transaksi');
     }
 
     /**
@@ -96,13 +94,14 @@ class TargetController extends Controller
      */
     public function destroy(string $id)
     {
-        DB::table('target')->where('id', $id)->delete();
-        return redirect('/target')->with('success', 'Data Berhasil Dihapus!');
+        DB::table('transaksi')->where('id', $id)->delete();
+        return redirect('/transaksi')->with('success', 'Data Berhasil Dihapus!');
     }
 
     public function cetak()
     {
-        $target = Target::with('rekening')->get();
-        return view('target.cetak', compact('target'));
+        $transaksi = Transaksi::with('rekening')->get();
+        return view('transaksi.cetak', compact('transaksi'));
     }
+
 }

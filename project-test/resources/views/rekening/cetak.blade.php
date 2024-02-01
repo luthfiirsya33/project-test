@@ -6,16 +6,16 @@
 
 <body>
 <div class='form-group'>
-    <p align="center"><b>Laporan Data Rekening</b></p>
-    <table class="static" align="center" rules="all" border="1px" style="width: 85%">
-    <tr>
-        <th scope="col" rowspan="2">No</th>
-        <th scope="col" colspan="2">Kode Rekening</th>
-        <th scope="col" rowspan="2">Nama Rekening</th>
+    <p align="center"><b>TABEL REKENING</b></p>
+    <table class="static" align="center" rules="all" border="1px" style="width: 60%">
+    <tr style="background-color: lightgray;">
+        <th scope="col" rowspan="2"><b>No</b>No</th>
+        <th scope="col" colspan="2"><b>Kode Rekening</b></th>
+        <th scope="col" rowspan="2"><b>Nama Rekening</b></th>
     </tr>
-    <tr>
-        <th scope="col">Jenis Rekening</th>
-        <th scope="col">Sub Rekening</th>
+    <tr style="background-color: lightgray;">
+        <th scope="col"><b>Jenis Rekening</b></th>
+        <th scope="col"><b>Sub Rekening</b></th>
     </tr>
     @foreach ($rekening as $item)
     <tr>

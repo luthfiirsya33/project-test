@@ -4,21 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
 use App\Models\Rekening;
 
-
-class Target extends Model
+class Transaksi extends Model
 {
     use HasFactory;
 
-    protected $table = "target";
+    protected $table = "transaksi";
 
-    protected $fillable = ["tahun", "jumlah_target", "id_rekening"];
+    protected $fillable = ["tanggal_setor", "jumlah_setor", "id_rekening"];
 
     public function rekening(){
         return $this->belongsTo(Rekening::class, 'id_rekening');
     }
 
 }
-

@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('judul')
-Halaman List Target
+Halaman List Transaksi
 @endsection
 
 @push('scripts')
@@ -15,8 +15,8 @@ Halaman List Target
 @endpush
 @section('content')
 
-<a href="/target/create" class="btn btn-primary btn-sm mb-3">Tambah</a>
-<a href="/cetakTarget" target="_blank" class="btn btn-success btn-sm mb-3">Cetak</a>
+<a href="/transaksi/create" class="btn btn-primary btn-sm mb-3">Tambah</a>
+<a href="/cetakTransaksi" target="_blank" class="btn btn-success btn-sm mb-3">Cetak</a>
 
 <table class="table" id='myTable'>
     <thead>
@@ -25,23 +25,23 @@ Halaman List Target
         <th scope="col">Jenis Rekening</th>
         <th scope="col">Sub Rekening</th>
         <th scope="col">Nama Rekening</th>
-        <th scope="col">Tahun Anggaran</th>
-        <th scope="col">Target (Rp)</th>
+        <th scope="col">Tanggal Setor</th>
+        <th scope="col">Jumlah Setor (Rp)</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
-        @forelse ($target as $key => $value )
+        @forelse ($transaksi as $key => $value )
             <tr>
                 <td>{{$key + 1}}</td>
                 <td>{{$value->rekening->jenis_rekening}}</td>
                 <td>{{$value->rekening->sub_rekening}}</td>
                 <td>{{$value->rekening->nama_rekening}}</td>
-                <td>{{$value->tahun}}</td>
-                <td>{{$value->jumlah_target}}</td>
+                <td>{{$value->tanggal_setor}}</td>
+                <td>{{$value->jumlah_setor}}</td>
                     <td class="d-flex justify-content-center" >
-                    <a href="/target/{{$value -> id}}/edit" class="btn btn-info btn-sm my-1 mx-1">Edit</a>
-                    <form action="/target/{{$value -> id}}" method="POST">
+                    <a href="/transaksi/{{$value -> id}}/edit" class="btn btn-info btn-sm my-1 mx-1">Edit</a>
+                    <form action="/transaksi/{{$value -> id}}" method="POST">
                         @csrf
                         @method('delete')
                         <input type="submit" class="btn btn-danger btn-block btn-sm my-1 mx-1" value='Delete'>

@@ -16,7 +16,7 @@ Halaman List Rekening
 @section('content')
 
 <a href="/rekening/create" class="btn btn-primary btn-sm mb-3">Tambah</a>
-<a href="/cetakrekening" target="_blank" class="btn btn-success btn-sm mb-3">Cetak</a>
+<a href="/cetakRekening" target="_blank" class="btn btn-success btn-sm mb-3">Cetak</a>
 
 <table class="table" id='myTable'>
     <thead>
